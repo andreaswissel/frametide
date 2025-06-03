@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="Frametide logo" width="640" /><br>
+</p>
+
 # Frametide - Figma components rolling in as code, just like the tide
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
