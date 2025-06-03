@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  figma-mcp-server:
+    build: .
+    container_name: figma-mcp-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - FIGMA_ACCESS_TOKEN=${FIGMA_ACCESS_TOKEN}
+      - CACHE_TTL_COMPONENT=3600000
+      - CACHE_TTL_TOKENS=86400000
+      - CACHE_MAX_SIZE=1000
+    ports:
+      - "3000:3000"  # Optional: for health checks
+    volumes:
+      - ./logs:/app/logs  # Optional: for persistent logs
+    healthcheck:
+      test: ["CMD", "node", "dist/cli/index.js", "health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Optional: Redis for distributed caching
+  redis:
+    image: redis:7-alpine
+    container_name: figma-mcp-redis
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  redis_data:

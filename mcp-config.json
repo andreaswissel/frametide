@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "figma-mcp-server": {
+      "command": "node",
+      "args": ["./dist/index.js"],
+      "cwd": ".",
+      "env": {
+        "NODE_ENV": "production",
+        "LOG_LEVEL": "info"
+      }
+    }
+  }
+}
