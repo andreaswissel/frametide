@@ -37,13 +37,16 @@ git clone https://github.com/your-org/figma-mcp-server.git
 cd figma-mcp-server
 npm install
 
-# 2. Interactive setup (creates .env with your Figma token)
+# 2. Build everything
+npm run build
+
+# 3. Interactive setup (creates .env with your Figma token)
 npm run setup
 
-# 3. Test your connection
+# 4. Test your connection
 npm run health
 
-# 4. Start the server
+# 5. Start the server
 npm start
 ```
 
