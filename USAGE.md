@@ -78,8 +78,8 @@ Perfect for development workflows where you want to generate code directly in yo
   "mcp.servers": {
     "figma": {
       "command": "node",
-      "args": ["./dist/index.js"],
-      "cwd": "${workspaceFolder}/path/to/frametide",
+      "args": ["/path/to/frametide/dist/index.js"],
+      "cwd": "${workspaceFolder}",
       "env": {
         "FIGMA_ACCESS_TOKEN": "your_figma_token_here"
       }
@@ -102,8 +102,8 @@ Ideal for AI-powered coding with design system integration.
   "mcp.servers": {
     "figma": {
       "command": "node",
-      "args": ["./dist/index.js"],
-      "cwd": "${workspaceFolder}/path/to/frametide",
+      "args": ["/path/to/frametide/dist/index.js"],
+      "cwd": "${workspaceFolder}",
       "env": {
         "FIGMA_ACCESS_TOKEN": "your_figma_token_here"
       }

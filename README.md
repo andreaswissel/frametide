@@ -33,8 +33,8 @@ A **production-grade MCP (Model Context Protocol) server** that extracts compone
 
 ```bash
 # 1. Clone and install
-git clone https://github.com/your-org/figma-mcp-server.git
-cd figma-mcp-server
+git clone https://github.com/andreaswissel/frametide.git
+cd frametide
 npm install
 
 # 2. Build everything
@@ -221,7 +221,7 @@ Add to your project's `.cursor/settings.json`:
     "figma": {
       "command": "node", 
       "args": ["/path/to/frametide/dist/index.js"],
-      "cwd": "${workspaceFolder}/path/to/frametide",
+      "cwd": "${workspaceFolder}",
       "env": {
         "FIGMA_ACCESS_TOKEN": "your_token_here"
       }
@@ -363,7 +363,7 @@ npm run dev  # Shows detailed logging
 1. **Check the logs** - The server provides detailed error messages
 2. **Test with known files** - Use Figma Community files for testing
 3. **Verify token scopes** - Ensure you have the required permissions
-4. **Review documentation** - See [docs/](./docs/) for detailed guides
+
 
 ## 🤝 Contributing
 
@@ -379,7 +379,6 @@ We welcome contributions! Here's how to get started:
 - ✅ **Type Safety**: All code must pass TypeScript strict checks
 - ✅ **Testing**: Maintain >90% test coverage
 - ✅ **Security**: Follow security best practices for API integrations
-- ✅ **Documentation**: Update relevant docs for new features
 
 ## 🔗 Related Projects
 
