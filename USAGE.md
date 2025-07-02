@@ -69,10 +69,7 @@ The most seamless experience. Claude can directly use the MCP tools in natural c
 
 Perfect for development workflows where you want to generate code directly in your editor.
 
-**1. Install the MCP extension:**
-- [MCP Client for VS Code](https://marketplace.visualstudio.com/items?itemName=modelcontextprotocol.mcp-client)
-
-**2. Add to workspace `.vscode/settings.json`:**
+**1. Add to workspace `.vscode/settings.json`:**
 ```json
 {
   "mcp.servers": {
@@ -88,7 +85,7 @@ Perfect for development workflows where you want to generate code directly in yo
 }
 ```
 
-**3. Use via Command Palette:**
+**2. Use via Command Palette:**
 - `Ctrl/Cmd + Shift + P` → "MCP: Connect to Server"
 - Start chatting with your AI assistant
 
