@@ -69,14 +69,7 @@ npm start
 │   ├── services/         # Cache and core services
 │   ├── utils/            # Security, logging, validation
 │   └── __tests__/        # Test suite
-├── docs/                  # Documentation
-│   ├── requirements.md    # Functional requirements
-│   ├── architecture.md    # System architecture
-│   ├── api-specification.md # MCP API reference
-│   └── figma-integration.md # Figma API details
 ├── USAGE.md              # Integration examples
-├── DEPLOYMENT.md         # Production deployment guide
-├── AGENT.md             # AI agent development guide
 └── docker-compose.yml   # Container orchestration
 ```
 
@@ -149,11 +142,6 @@ npm run cli validate-file --file YOUR_FILE_ID
 | Document | Description |
 |----------|-------------|
 | [**USAGE.md**](./USAGE.md) | Integration examples and usage patterns |
-| [**DEPLOYMENT.md**](./DEPLOYMENT.md) | Production deployment guide |
-| [**AGENT.md**](./AGENT.md) | AI agent development guide |
-| [**API Specification**](./docs/api-specification.md) | Complete MCP API reference |
-| [**Architecture**](./docs/architecture.md) | System design and components |
-| [**Requirements**](./docs/requirements.md) | Functional and technical requirements |
 
 ## 🔧 Available Tools
 
@@ -180,12 +168,15 @@ _*Variables require Figma Enterprise plan_
 ## 🚀 Integration Examples
 
 ### With Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
 ```json
 {
   "mcpServers": {
     "figma": {
       "command": "node",
-      "args": ["/path/to/figma-mcp-server/dist/index.js"],
+      "args": ["/absolute/path/to/frametide/dist/index.js"],
       "env": {
         "FIGMA_ACCESS_TOKEN": "your_token_here"
       }
@@ -194,8 +185,56 @@ _*Variables require Figma Enterprise plan_
 }
 ```
 
-### With Cursor/VS Code
-The server works with any MCP-compatible client. See [USAGE.md](./USAGE.md) for detailed integration examples.
+**Config locations:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
+
+### With VS Code
+
+Add to your workspace `.vscode/settings.json`:
+
+```json
+{
+  "mcp.servers": {
+    "figma": {
+      "command": "node",
+      "args": ["/path/to/frametide/dist/index.js"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}
+```
+
+**Required extensions:**
+- [MCP Client for VS Code](https://marketplace.visualstudio.com/items?itemName=modelcontextprotocol.mcp-client)
+
+### With Cursor
+
+Add to your project's `.cursor/settings.json`:
+
+```json
+{
+  "mcp.servers": {
+    "figma": {
+      "command": "node", 
+      "args": ["/path/to/frametide/dist/index.js"],
+      "cwd": "${workspaceFolder}/path/to/frametide",
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "your_token_here"
+      }
+    }
+  }
+}
+```
+
+**Setup steps:**
+1. Install the MCP extension in Cursor
+2. Build the server: `cd frametide && npm run build`
+3. Add the configuration above
+4. Restart Cursor
 
 ### 🎯 Natural Workflow Example
 

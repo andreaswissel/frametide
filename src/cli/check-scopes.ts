@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
+import dotenv from 'dotenv';
 import { FigmaClient } from '../figma/client.js';
+
+// Load environment variables from .env file
+dotenv.config();
 
 async function checkScopes() {
   try {
