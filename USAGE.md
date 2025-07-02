@@ -127,7 +127,7 @@ The session-based approach is perfect for focused implementation sessions.
 
 ```typescript
 // 1. Set working file
-"Let's implement components from this Figma file: https://www.figma.com/design/abc123/Design-System"
+"Let's implement components from this Figma file: https://www.figma.com/design/abc123/Design-System" // REPLACE WITH YOUR FIGMA FILE!
 
 // 2. Get implementation queue
 "Show me what components need to be implemented"
