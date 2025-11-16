@@ -282,6 +282,25 @@ docker-compose up -d
 docker exec figma-mcp-server npm run health
 ```
 
+## Environment Variables
+
+The MCP server requires a Figma access token and other configuration via environment variables. When installed as an npm package, it will automatically load `.env` from your project root.
+
+1. Copy `.env.example` to `.env` in your project root:
+   ```bash
+   cp node_modules/frametide/.env.example .env
+   # Or manually create .env and fill in your values
+   ```
+2. Add your Figma access token:
+   ```env
+   FIGMA_ACCESS_TOKEN=your-figma-access-token-here
+   ```
+3. (Optional) Set other config values as needed.
+
+**Never commit your `.env` file with secrets to source control.**
+
+For more details, see `.env.example`.
+
 ## 🧪 Testing
 
 ```bash
