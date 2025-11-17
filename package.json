@@ -1,6 +1,6 @@
 {
   "name": "frametide",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "MCP server for Figma design system extraction using TypeScript SDK",
   "type": "module",
   "main": "dist/index.js",
