@@ -1,19 +1,20 @@
 #!/usr/bin/env node
 
-// Load environment variables from .env file
+// Load environment variables FIRST, before any other imports
 import { config } from "dotenv";
 import { join } from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-// Get the directory of the current module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // Try to load .env from consuming project's root first, then fallback to package's own .env
 config({ path: join(process.cwd(), ".env") });
+
+// For ESM compatibility, get the directory of the current module
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 config({ path: join(__dirname, "../.env") });
 
+// NOW import everything else that depends on environment variables
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -1036,7 +1037,5 @@ async function main() {
   }
 }
 
-// Check if this is the main module in ES module environment
-if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch(console.error);
-}
+// Always run the main function when this file is executed
+main().catch(console.error);
